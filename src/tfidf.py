@@ -81,9 +81,13 @@ def lemmatizeWords(data):
 
 def createTFIDF(wordsList):
     vocabulary = set()
+
     for words in wordsList:
         vocabulary.update(words.split(','))
-        
+
+    for i in range(50):                     # Taking first 50
+        vocabulary.update([i].split(','))
+
     vocabulary = list(vocabulary)
     tfidf = TfidfVectorizer(vocabulary=vocabulary)
     tfidf.fit(wordsList)
